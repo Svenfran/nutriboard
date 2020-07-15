@@ -1,12 +1,34 @@
 .navbar-lewagon {
+  position: fixed;
+  width: 100vw;
   justify-content: space-between;
-  background: white;
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-lewagon .navbar-brand .fa-apple-alt {
+  font-size: 30px;
+  color: #222;
+  &:hover {
+    color: #12664F;
+    transition: 0.4s ease;
+  }
+}
+
+.btn-ghost {
+  color: white;
+  border: 1px solid white;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.btn-ghost:hover {
+  opacity: 1;
+  color: white;
 }
