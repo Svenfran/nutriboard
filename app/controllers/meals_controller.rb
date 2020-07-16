@@ -3,6 +3,8 @@ class MealsController < ApplicationController
 
   def index
     @meals = Meal.all
+    @foods = Food.all
+    @nutrients = Nutrient.all
   end
 
   def show

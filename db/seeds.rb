@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts 'Destroy all...'
-Meal.destroy_all
 Nutrient.destroy_all
 Food.destroy_all
+Meal.destroy_all
 User.destroy_all
 puts 'Finished!'
 
@@ -21,11 +21,16 @@ user = User.create(
 )
 puts 'Finished!'
 
-puts 'create a meal...'
+puts 'create meals...'
 # create a meal
 meal_one = Meal.create(
   category: 'breakfast',
   name: 'Oatmeal',
+  user_id: user.id
+)
+meal_two = Meal.create(
+  category: 'snack',
+  name: 'Snack',
   user_id: user.id
 )
 puts 'Finished'
@@ -60,6 +65,21 @@ food_four = Food.create(
   unit: 'g',
   meal_id: meal_one.id
 )
+
+food_two_one = Food.create(
+  name: 'apple',
+  amount: 150,
+  unit: 'g',
+  meal_id: meal_two.id
+)
+
+food_two_two = Food.create(
+  name: 'cashews',
+  amount: 50,
+  unit: 'g',
+  meal_id: meal_two.id
+)
+
 puts 'Finished!'
 
 puts 'create nutrients...'
@@ -93,6 +113,20 @@ calories_four = Nutrient.create(
   food_id: food_four.id
 )
 
+calories_two_one = Nutrient.create(
+  name: 'calories',
+  amount: 150,
+  unit: 'kcal',
+  food_id: food_two_one.id
+)
+
+calories_two_two = Nutrient.create(
+  name: 'calories',
+  amount: 300,
+  unit: 'kcal',
+  food_id: food_two_two.id
+)
+
 # fat for food in meal_one
 fat_one = Nutrient.create(
   name: 'fat',
@@ -102,24 +136,38 @@ fat_one = Nutrient.create(
 )
 
 fat_two = Nutrient.create(
-  name: 'calories',
+  name: 'fat',
   amount: 50,
   unit: 'g',
   food_id: food_two.id
 )
 
 fat_three = Nutrient.create(
-  name: 'calories',
+  name: 'fat',
   amount: 0,
   unit: 'g',
   food_id: food_three.id
 )
 
 fat_four = Nutrient.create(
-  name: 'calories',
+  name: 'fat',
   amount: 0.2,
   unit: 'g',
   food_id: food_four.id
+)
+
+fat_two_one = Nutrient.create(
+  name: 'fat',
+  amount: 0,
+  unit: 'g',
+  food_id: food_two_one.id
+)
+
+fat_two_two = Nutrient.create(
+  name: 'fat',
+  amount: 50,
+  unit: 'g',
+  food_id: food_two_two.id
 )
 
 # carbs for food in meal_one
@@ -151,6 +199,20 @@ carb_four = Nutrient.create(
   food_id: food_four.id
 )
 
+carb_two_one = Nutrient.create(
+  name: 'carbs',
+  amount: 60,
+  unit: 'g',
+  food_id: food_two_one.id
+)
+
+carb_two_two = Nutrient.create(
+  name: 'carbs',
+  amount: 15,
+  unit: 'g',
+  food_id: food_two_two.id
+)
+
 # protein for food in meal_one
 protein_one = Nutrient.create(
   name: 'protein',
@@ -178,5 +240,19 @@ carb_four = Nutrient.create(
   amount: 20,
   unit: 'g',
   food_id: food_four.id
+)
+
+protein_two_one = Nutrient.create(
+  name: 'protein',
+  amount: 3,
+  unit: 'g',
+  food_id: food_two_one.id
+)
+
+protein_two_two = Nutrient.create(
+  name: 'protein',
+  amount: 25,
+  unit: 'g',
+  food_id: food_two_two.id
 )
 puts 'Finished!'
