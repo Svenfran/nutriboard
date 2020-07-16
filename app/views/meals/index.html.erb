@@ -1,0 +1,25 @@
+<div class="row">
+<%= render 'shared/dash-sidebar' %>
+  <div class="col-md-4">
+    <% @meals.each do |meal| %>
+      <div class="wrapper">
+        <div class="meal-box">
+          <div class="meal-header">
+            <h6><%= meal.name %></h6>
+            <div class="meal-category">
+              <p><%= meal.category %></p>
+            </div>
+          </div>
+          <div class="food-box">
+            <div class="food-info">
+              <p>60g Oats</p>
+            </div>
+            <div class="food-nutrients">
+              <p>6g Fat</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

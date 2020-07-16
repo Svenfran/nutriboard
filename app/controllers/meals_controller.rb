@@ -2,6 +2,7 @@ class MealsController < ApplicationController
   before_action :set_meal, only: %i[show edit update destroy]
 
   def index
+    @meals = Meal.all
   end
 
   def show

@@ -16,7 +16,7 @@ puts 'Finished!'
 puts 'create user...'
 #create user
 user = User.create(
-  email: "john@example",
+  email: "john@example.com",
   password: "password"
 )
 puts 'Finished!'
