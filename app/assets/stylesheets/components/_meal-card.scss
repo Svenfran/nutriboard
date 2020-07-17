@@ -13,14 +13,22 @@
   margin-bottom: 12px;
 }
 
-.meal-header, .food-box {
-  width: 45vw;
+.meal-header {
+  width: 25vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-// .food-nutrients {
-//   display: flex;
-//   justify-content: space-between;
-// }
+.food-info {
+  list-style-type: none;
+}
+
+.toggle-nutrients {
+  cursor: pointer;
+}
+
+.open {
+  display: none;
+  transition: .5s ease;
+}

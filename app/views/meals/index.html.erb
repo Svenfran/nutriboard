@@ -10,22 +10,34 @@
           </div>
         </div>
         <div class="food-box">
-          <% @foods.each do |food| %>
-              <div class="food-info">
-                <% if meal.id == food.meal_id %>
-                  <p><%= food.amount.round%><%= food.unit%> <%= food.name%></p>
-                <% end %>
-              </div>
-            <% @nutrients.each do |nutrient| %>
-              <div class="food-nutrients">
-                <% if food.id == nutrient.food_id %>
-                  <p><%= nutrient.amount.round%><%= nutrient.unit%> <%= nutrient.name%></p>
-                <% end %>
-              </div>
+          <ul class="food-info">
+            <% @foods.each do |food| %>
+              <% if meal.id == food.meal_id %>
+                <li class="toggle-nutrients"><%= food.amount.round%><%= food.unit %> <strong><%= food.name %></strong></li>
+                <div class="nutrients">
+                  <% @nutrients.each do |nutrient| %>
+                    <% if food.id == nutrient.food_id %>
+                        <li><%= nutrient.amount.round %><%= nutrient.unit %> <%= nutrient.name %></li>
+                    <% end %>
+                  <% end %>
+                </div>
+              <% end %>
             <% end %>
-          <% end %>
+          </ul>
         </div>
       </div>
     </div>
   <% end %>
 </div>
+
+<script>
+// right now it toggles only the nutrients of the first food showen (each with index??)
+const toggleNutrients = document.querySelectorAll('.toggle-nutrients');
+const nutrients = document.querySelector('.nutrients');
+
+toggleNutrients.forEach((nutrient) => {
+  nutrient.addEventListener('click', () => {
+    nutrients.classList.toggle('open')
+  });
+});
+</script>
