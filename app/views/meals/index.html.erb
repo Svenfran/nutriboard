@@ -1,5 +1,5 @@
 <%= render 'shared/dash-sidebar' %>
-<div class="col-md-4">
+<div class="content col-md-4">
   <% @meals.each do |meal| %>
     <div class="wrapper">
       <div class="meal-box">
@@ -14,10 +14,10 @@
             <% @foods.each do |food| %>
               <% if meal.id == food.meal_id %>
                 <li class="toggle-nutrients"><%= food.amount.round%><%= food.unit %> <strong><%= food.name %></strong></li>
-                <div class="nutrients">
+                <div class="nutrients hide">
                   <% @nutrients.each do |nutrient| %>
                     <% if food.id == nutrient.food_id %>
-                        <li><%= nutrient.amount.round %><%= nutrient.unit %> <%= nutrient.name %></li>
+                      <li><%= nutrient.amount.round %><%= nutrient.unit %> <%= nutrient.name %></li>
                     <% end %>
                   <% end %>
                 </div>
@@ -31,13 +31,22 @@
 </div>
 
 <script>
-// right now it toggles only the nutrients of the first food showen (each with index??)
-const toggleNutrients = document.querySelectorAll('.toggle-nutrients');
-const nutrients = document.querySelector('.nutrients');
+const foods = Array.from(document.querySelectorAll('.toggle-nutrients'));
+const foodNutrients = Array.from(document.querySelectorAll('.nutrients'));
 
-toggleNutrients.forEach((nutrient) => {
-  nutrient.addEventListener('click', () => {
-    nutrients.classList.toggle('open')
+foods.forEach((food) => {
+  foodNutrients.forEach((nutrient) => {
+    food.addEventListener('click', () => {
+      if (foods.indexOf(food) === foodNutrients.indexOf(nutrient)) {
+        if (nutrient.classList.contains('hide')) {
+          nutrient.classList.remove('hide')
+          nutrient.classList.add('show')
+        } else {
+          nutrient.classList.remove('show')
+          nutrient.classList.add('hide')
+        };
+      };
+    });
   });
 });
 </script>
