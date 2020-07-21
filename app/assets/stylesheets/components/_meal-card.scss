@@ -4,7 +4,7 @@
   border-radius: 4px;
   padding: 8px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .meal-header {
@@ -28,4 +28,25 @@
 
 .hide {
   display: none;
+}
+
+.add {
+  padding-left: 15px;
+  color: #2f323a;
+  &:hover {
+    color: #12664F;
+    text-decoration: none;
+  }
+}
+
+.back {
+  color: #2f323a;
+  &:hover {
+    color: #12664F;
+    text-decoration: none;
+  }
+}
+
+.nutrient-info {
+  font-size: 12px;
 }

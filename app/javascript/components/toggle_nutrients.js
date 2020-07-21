@@ -5,8 +5,6 @@ const toggleNutrients = () => {
   foods.forEach((food) => {
     foodNutrients.forEach((nutrient) => {
       food.addEventListener('click', () => {
-        
-        
         if (foods.indexOf(food) === foodNutrients.indexOf(nutrient)) {
           if (nutrient.classList.contains('hide')) {
             nutrient.classList.remove('hide')
@@ -16,8 +14,6 @@ const toggleNutrients = () => {
             nutrient.classList.add('hide')
           };
         };
-        // console.log(foods.indexOf(food));
-        // console.log(foodNutrients.indexOf(nutrient));
       });
     });
   });

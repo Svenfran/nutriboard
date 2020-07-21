@@ -1,31 +1,36 @@
-<%= render 'shared/dash-sidebar' %>
-<div class="content col-md-4">
-  <% @meals.each do |meal| %>
-    <div class="wrapper">
-      <div class="meal-box">
-        <div class="meal-header">
-          <h6><%= meal.name %></h6>
-          <div class="meal-category">
-            <p><%= meal.category %></p>
+<%= render 'shared/sidebar' %>
+<div class="content">
+  <div class="row mx-0">
+    <% @meals.each do |meal| %>
+      <div class="col-md-4">
+        <div class="wrapper">
+          <div class="meal-box">
+            <div class="meal-header">
+              <h6><%= meal.name %></h6>
+              <div class="meal-category">
+                <p><%= meal.category %></p>
+              </div>
+            </div>
+            <div class="food-box">
+              <ul class="food-info">
+                <% @foods.each do |food| %>
+                  <% if meal.id == food.meal_id %>
+                    <li class="toggle-nutrients"><%= food.amount.round%><%= food.unit %> <strong><%= food.name %></strong></li>
+                    <div class="nutrients hide">
+                      <% @nutrients.each do |nutrient| %>
+                        <% if food.id == nutrient.food_id %>
+                          <li class="nutrient-info"><%= nutrient.amount.round %><%= nutrient.unit %> <%= nutrient.name %></li>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="food-box">
-          <ul class="food-info">
-            <% @foods.each do |food| %>
-              <% if meal.id == food.meal_id %>
-                <li class="toggle-nutrients"><%= food.amount.round%><%= food.unit %> <strong><%= food.name %></strong></li>
-                <div class="nutrients hide">
-                  <% @nutrients.each do |nutrient| %>
-                    <% if food.id == nutrient.food_id %>
-                      <li><%= nutrient.amount.round %><%= nutrient.unit %> <%= nutrient.name %></li>
-                    <% end %>
-                  <% end %>
-                </div>
-              <% end %>
-            <% end %>
-          </ul>
-        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  <%= link_to "Add a new meal", new_meal_path, class: 'add'%>
 </div>

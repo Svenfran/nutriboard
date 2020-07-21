@@ -7,13 +7,25 @@ class MealsController < ApplicationController
     @nutrients = Nutrient.all
   end
 
-  def show
-  end
+  def show; end
   
   def new
+    @meal = Meal.new
   end
 
   def create
+    @meal = Meal.new(meal_params)
+    @meal.user = current_user
+
+    respond_to do |format|
+      if @meal.save
+        format.html { redirect_to meals_path(params[:id]), notice: 'Meal was successfully created.' }
+        format.json { render :index, status: :created, location: @meal }
+      else
+        format.html { render :new }
+        format.json { render json: @meal.errors, status: :unprocessable_entity }
+      end
+    end
   end
   
   def edit
@@ -32,7 +44,7 @@ class MealsController < ApplicationController
   end
 
   def meal_params
-    params.require(:meal).permit(params[:category, :name, :user_id])
+    params.require(:meal).permit(:name, :category)
   end
 
 end

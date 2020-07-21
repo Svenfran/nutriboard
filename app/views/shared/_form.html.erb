@@ -1,0 +1,10 @@
+  <%= simple_form_for(@meal) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :category %>
+  <%# food name -> from API AUTOCOMPLET in search-field%>
+  <%# food amount -> you can type any amount you want (not from API) %>
+  <%# food unit -> only units should be shown if available (from API) DROPDWON%>
+  <%= f.submit class: 'btn btn-info mb-3' %>
+<% end %>
+
+<%= link_to "Back", meals_path, class: 'back'%>
