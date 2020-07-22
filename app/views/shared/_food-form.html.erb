@@ -1,0 +1,7 @@
+<%= simple_form_for([@meal, @food]) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :amount %>
+  <%= f.input :unit %>
+  <%= f.submit class: 'btn btn-info mb-3' %>
+<% end %>
+<%= link_to "Back", meals_path, class: 'back'%>

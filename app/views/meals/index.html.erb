@@ -2,7 +2,7 @@
 <div class="content">
   <div class="row mx-0">
     <% @meals.each do |meal| %>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="wrapper">
           <div class="meal-box">
             <div class="meal-header">
@@ -10,6 +10,9 @@
               <div class="meal-category">
                 <p><%= meal.category %></p>
               </div>
+              <%= link_to new_meal_food_path(meal) do %>
+                <i class="fas fa-plus"></i>
+              <% end %>
             </div>
             <div class="food-box">
               <ul class="food-info">
@@ -32,5 +35,5 @@
       </div>
     <% end %>
   </div>
-  <%= link_to "Add a new meal", new_meal_path, class: 'add'%>
+  <%= link_to "Add Meal", new_meal_path, class: 'add'%>
 </div>

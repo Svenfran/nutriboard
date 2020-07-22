@@ -1,5 +1,5 @@
 .wrapper {
-  width: 20vw;
+  width: 18vw;
   background: white;
   border-radius: 4px;
   padding: 8px;
@@ -12,10 +12,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  i {
+    color: #2f323a;
+    &:hover {
+      color: #12664F;
+    }
+  }
 }
 
 .food-info {
   list-style-type: none;
+  color: #2f323a;
 }
 
 .toggle-nutrients {

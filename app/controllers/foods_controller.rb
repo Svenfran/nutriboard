@@ -10,7 +10,16 @@ class FoodsController < ApplicationController
     @meal = Meal.find(params[:meal_id])
     @food = Food.new(food_params)
     @food.meal = @meal
-    @food.save
+   
+    respond_to do |format|
+      if @food.save
+        format.html { redirect_to meals_path(params[:id]), notice: 'Food was successfully created.' }
+        format.json { render :index, status: :created, location: @food }
+      else
+        format.html { render :new }
+        format.json { render json: @food.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit
