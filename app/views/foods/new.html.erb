@@ -1,6 +1,8 @@
 <%= render 'shared/sidebar' %>
 <div class="content">
   <div class="form-ncu">
+    <h2 class="mb-3 text-center"><%= @meal.name %></h2>
+    <p class="mb-3 text-center"><%= @meal.created_at.strftime("%b %d, %Y") %></p>
     <%= render 'shared/food-form' %>
   </div>
 </div>

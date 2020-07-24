@@ -19,9 +19,8 @@ class FoodsController < ApplicationController
     respond_to do |format|
       if @food.save
         food_nutrients = fetch_ingredient_info(@food.name, @food.id, @food.amount)
-        food_nutrients.each do |n|
-          n.save
-        end
+        food_nutrients.each { |n| n.save }
+
         format.html { redirect_to meals_path(params[:id]), notice: 'Food was successfully created.' }
         format.json { render :index, status: :created, location: @food }
       else
@@ -59,12 +58,12 @@ class FoodsController < ApplicationController
     ingredient = JSON.parse(ingredient_serialized)
 
     unless ingredient['parsed'].empty?
-      ingredients_arr = []
+      nutrients_arr = []
       nutrients = ['Energy', 'Protein', 'Fat', 'Carbohydrates', 'Fiber']
 
       ingredient['parsed'][0]['food']['nutrients'].each_with_index do |(k, v), i|
         
-        ingredients_arr << Nutrient.new(
+        nutrients_arr << Nutrient.new(
           name: nutrients[i],
           amount: (v / 100) * amount,
           unit: k == 'ENERC_KCAL' ? 'kcal' : 'g',
@@ -73,10 +72,10 @@ class FoodsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { render :new }
+        format.html { render :new, notice: "We couldn't find your food!" }
         format.json { render json: @food.errors, status: :unprocessable_entity }
       end
     end
-    ingredients_arr
+    nutrients_arr
   end
 end
