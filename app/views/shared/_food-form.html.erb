@@ -1,7 +1,37 @@
 <%= simple_form_for([@meal, @food]) do |f| %>
   <%= f.input :name %>
+  <ul id="results" class="list-group"></ul>
   <%= f.input :amount %>
   <%= f.input :unit %>
   <%= f.submit class: 'btn btn-info mb-3' %>
 <% end %>
 <%= link_to "Back", meals_path, class: 'back'%>
+
+
+
+
+<script>
+const results = document.querySelector('#results');
+const input = document.querySelector("#food_name");
+const appId = process.env.APP_ID; // does not work!
+const appKey = process.env.APP_KEY; // does not work!
+
+const insertList = (data) => {
+  data.forEach((result) => {
+    const list = `<li class="list-group-item">${result}</li>`;
+    results.insertAdjacentHTML("beforeend", list); 
+  });
+};
+
+const searchFood = (query) => {
+  fetch(`http://api.edamam.com/auto-complete?q=${query}&limit=10&app_id=${appId}&app_key=${appKey}`)
+    .then(response => response.json())
+    .then(insertList);
+};
+
+input.addEventListener("keyup", (event) => {
+  event.preventDefault();
+  results.innerHTML = '';
+  searchFood(input.value);
+});
+</script>

@@ -18,8 +18,18 @@
     font-size: 14px;
   }
 }
-
+// form-ncu = form for new, create, update
 .form-ncu {
   width: 50%;
   margin: 20px auto;
+}
+
+// dorpdown for autocomplete
+#results {
+  position: absolute;
+  background: white;
+  list-style-type: none;
+  padding-left: 0px;
+  font-size: 16px;
+  line-height: 1.6em;
 }

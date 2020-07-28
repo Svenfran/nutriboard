@@ -28,13 +28,23 @@ class MealsController < ApplicationController
     end
   end
   
-  def edit
-  end
+  def edit; end
 
   def update
+    respond_to do |format|
+      if @meal.update(meal_params)
+        format.html { redirect_to meals_path(params[:id]), notice: 'Meal was successfully updated.' }
+        format.json { render :index, status: :created, location: @meal }
+      else
+        format.html { render :edit }
+        format.json { render json: @meal.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
+    @meal.destroy
+    redirect_to meals_path
   end
 
   private

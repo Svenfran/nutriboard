@@ -2,16 +2,15 @@ require 'open-uri'
 require 'json'
 
 class FoodsController < ApplicationController
+  before_action :set_meal, only: %i[new create edit update]
   before_action :set_food, only: %i[edit update destroy]
 
   def new
-    @meal = Meal.find(params[:meal_id])
     @food = Food.new
     @nutrient = Nutrient.new
   end
 
   def create
-    @meal = Meal.find(params[:meal_id])
     @food = Food.new(food_params)
     @food.meal = @meal
     food_nutrients = []
@@ -30,13 +29,23 @@ class FoodsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
+    respond_to do |format|
+      if @food.update(food_params)
+        format.html { redirect_to meals_path(params[:id]), notice: 'Food was successfully updated.' }
+        format.json { render :index, status: :created, location: @food }
+      else
+        format.html { render :edit }
+        format.json { render json: @food.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
+    @food.destroy
+    redirect_to meals_path
   end
 
   private
@@ -45,8 +54,12 @@ class FoodsController < ApplicationController
     @food = Food.find(params[:id])
   end
 
+  def set_meal
+    @meal = Meal.find(params[:meal_id])
+  end
+
   def food_params
-    params.require(:food).permit(:name, :amount, :unit, :meal_id)
+    params.require(:food).permit(:name, :amount, :unit)
   end
 
   def fetch_ingredient_info(food, id, amount)

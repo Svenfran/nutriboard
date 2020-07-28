@@ -8,21 +8,44 @@
 }
 
 .meal-header {
-  width: 15vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  i {
-    color: #2f323a;
-    &:hover {
-      color: #12664F;
-    }
+  border-bottom: 1px solid #222;
+}
+
+.meal-box i {
+  color: #2f323a;
+  font-size: small;
+  &:hover {
+    color: #12664F;
   }
+}
+
+.meal-category {
+  font-size: 10px;
+  background: #2f323a;
+  color: white;
+  padding: 4px;
+  border-radius: 4px;
+  margin: 4px;
 }
 
 .food-info {
   list-style-type: none;
   color: #2f323a;
+  i {
+    font-size: small;
+  }
+}
+
+.food-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  i {
+    margin-left: 8px;
+  }
 }
 
 .toggle-nutrients {

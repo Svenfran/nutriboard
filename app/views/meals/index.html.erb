@@ -6,19 +6,35 @@
         <div class="wrapper">
           <div class="meal-box">
             <div class="meal-header">
-              <h6><%= meal.name %></h6>
-              <div class="meal-category">
-                <p><%= meal.category %></p>
-              </div>
+              <h5><%= meal.name %></h5>
+              <%= link_to edit_meal_path(meal) do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
               <%= link_to new_meal_food_path(meal) do %>
                 <i class="fas fa-plus"></i>
               <% end %>
+              <%= link_to meal_path(meal), method: :delete, data: {confirm: "Delete #{meal.name}?"} do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+              <div class="meal-category">
+                <p><%= meal.category %></p>
+              </div>
             </div>
             <div class="food-box">
               <ul class="food-info">
                 <% @foods.each do |food| %>
                   <% if meal.id == food.meal_id %>
-                    <li class="toggle-nutrients"><%= food.amount.round%><%= food.unit %> <strong><%= food.name %></strong></li>
+                    <div class="food-icons">
+                      <li class="toggle-nutrients"><%= food.amount.round %><%= food.unit %> <strong><%= food.name %></strong></li>
+                      <div class="food-icons">
+                        <%= link_to edit_meal_food_path(meal, food) do %>
+                          <i class="fas fa-edit"></i>
+                        <% end %>
+                        <%= link_to food_path(food), method: :delete, data: {confirm: "Delete #{food.name} form #{meal.name}?"} do %>
+                          <i class="far fa-trash-alt"></i>
+                        <% end %>
+                      </div>
+                    </div>
                     <div class="nutrients hide">
                       <% @nutrients.each do |nutrient| %>
                         <% if food.id == nutrient.food_id %>
