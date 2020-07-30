@@ -32,6 +32,7 @@
 }
 
 .food-info {
+  font-size: small;
   list-style-type: none;
   color: #2f323a;
   i {
@@ -79,4 +80,18 @@
 
 .nutrient-info {
   font-size: 12px;
+}
+
+.nutrition-sum {
+  display: inline-block;
+  align-items: center;
+  width: 100%;
+}
+
+.nutri-sum {
+  display: flex;
+  justify-content: space-between;
+  p {
+    font-size: 12px;
+  }
 }

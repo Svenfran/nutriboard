@@ -5,8 +5,8 @@
       <div class="col-md-3">
         <div class="wrapper">
           <div class="meal-box">
-            <div class="meal-header">
-              <h5><%= meal.name %></h5>
+            <div class="meal-header pb-1">
+              <h6><%= meal.name.upcase %></h6>
               <%= link_to edit_meal_path(meal) do %>
                 <i class="fas fa-edit"></i>
               <% end %>
@@ -21,7 +21,7 @@
               </div>
             </div>
             <div class="food-box">
-              <ul class="food-info">
+              <ul class="food-info mt-2 mb-0">
                 <% @foods.each do |food| %>
                   <% if meal.id == food.meal_id %>
                     <div class="food-icons">
@@ -38,13 +38,48 @@
                     <div class="nutrients hide">
                       <% @nutrients.each do |nutrient| %>
                         <% if food.id == nutrient.food_id %>
-                          <li class="nutrient-info"><%= nutrient.amount.round %><%= nutrient.unit %> <%= nutrient.name %></li>
+                          <li class="nutrient-info"><%= nutrient.amount.round %> <%= nutrient.unit %> <%= nutrient.name %></li>
                         <% end %>
                       <% end %>
                     </div>
                   <% end %>
                 <% end %>
               </ul>
+            </div>
+          </div>
+          <% @sum_e = 0 %>
+          <% @sum_p = 0 %>
+          <% @sum_f = 0 %>
+          <% @sum_c = 0 %>
+          <% @foods.each do |food| %>
+            <% if meal.id == food.meal_id %>
+              <% @nutrients.each do |nutrient| %>
+                <% if food.id == nutrient.food_id %>
+                  <% if nutrient.name == 'Energy' %>
+                    <% @sum_e += nutrient.amount %>
+                  <% elsif nutrient.name == 'Protein' %>
+                    <% @sum_p += nutrient.amount %>
+                  <% elsif nutrient.name == 'Fat' %>
+                    <% @sum_f += nutrient.amount %>
+                  <% elsif nutrient.name == 'Carbohydrates' %>
+                    <% @sum_c += nutrient.amount %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+          <div class="nutrition-sum mt-2">
+            <div class="nutri-sum">
+              <p>Energy (kcal)</p><p><strong><%= @sum_e.round %></strong></p>
+            </div>
+            <div class="nutri-sum">
+              <p>Protein (g)</p><p><strong><%= @sum_p.round %></strong></p>
+            </div>
+            <div class="nutri-sum">
+              <p>Fat (g)</p><p><strong><%= @sum_f.round %></strong></p>
+            </div>
+            <div class="nutri-sum">
+              <p>Carbs (g)</p><p><strong><%= @sum_c.round %></strong></p>
             </div>
           </div>
         </div>
