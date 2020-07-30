@@ -4,7 +4,7 @@
     <% @meals.each do |meal| %>
       <div class="col-md-3">
         <div class="wrapper">
-          <div class="meal-box">
+          <div class="meal-box mb-2">
             <div class="meal-header pb-1">
               <h6><%= meal.name.upcase %></h6>
               <%= link_to edit_meal_path(meal) do %>
@@ -20,7 +20,11 @@
                 <p><%= meal.category %></p>
               </div>
             </div>
-            <div class="food-box">
+            <div class="show-food">
+              <p>SHOW FOOD</p>
+              <i class="fas fa-caret-down"></i>
+            </div>
+            <div class="food-box hide">
               <ul class="food-info mt-2 mb-0">
                 <% @foods.each do |food| %>
                   <% if meal.id == food.meal_id %>
@@ -68,17 +72,17 @@
               <% end %>
             <% end %>
           <% end %>
-          <div class="nutrition-sum mt-2">
-            <div class="nutri-sum">
+          <div class="nutrition-sum">
+            <div class="sum">
               <p>Energy (kcal)</p><p><strong><%= @sum_e.round %></strong></p>
             </div>
-            <div class="nutri-sum">
+            <div class="sum">
               <p>Protein (g)</p><p><strong><%= @sum_p.round %></strong></p>
             </div>
-            <div class="nutri-sum">
+            <div class="sum">
               <p>Fat (g)</p><p><strong><%= @sum_f.round %></strong></p>
             </div>
-            <div class="nutri-sum">
+            <div class="sum">
               <p>Carbs (g)</p><p><strong><%= @sum_c.round %></strong></p>
             </div>
           </div>

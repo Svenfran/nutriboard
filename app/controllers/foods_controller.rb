@@ -34,6 +34,10 @@ class FoodsController < ApplicationController
   def update
     respond_to do |format|
       if @food.update(food_params)
+        @food.nutrients.destroy_all
+        food_nutrients = fetch_ingredient_info(@food.name, @food.id, @food.amount)
+        food_nutrients.each { |n| n.save }
+
         format.html { redirect_to meals_path(params[:id]), notice: 'Food was successfully updated.' }
         format.json { render :index, status: :created, location: @food }
       else
