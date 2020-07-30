@@ -1,10 +1,10 @@
 <%= render 'shared/sidebar' %>
 <div class="content">
   <div class="form-ncu">
-  <% if @meal %>
-    <h2 class="mb-3 text-center"><%= @meal.name %></h2>
-    <p class="mb-3 text-center"><%= @meal.created_at.strftime("%b %d, %Y") %></p>
-  <% end %>
-    <%= render 'shared/food-form' %>
+    <% if @meal %>
+      <h2 class="mb-3 text-center"><%= @meal.name %></h2>
+      <p class="mb-3 text-center"><%= @meal.created_at.strftime("%b %d, %Y") %></p>
+    <% end %>
+  <%= render 'shared/food-form' %>
   </div>
 </div>
