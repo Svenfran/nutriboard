@@ -1,4 +1,8 @@
 <%= render 'shared/sidebar' %>
 <div class="content">
   <h5 class="ml-3">Number of Meals: <strong><%= @meals.count %></strong> </h5>
+  <h6 class="ml-3">lunch: <strong><%= @meals.where(category: 'lunch').count %></strong> </h6>
+  <h6 class="ml-3">dinner: <strong><%= @meals.where(category: 'dinner').count %></strong> </h6>
+  <h6 class="ml-3">snack: <strong><%= @meals.where(category: 'snack').count %></strong> </h6>
+  <h6 class="ml-3">breakfast: <strong><%= @meals.where(category: 'breakfast').count %></strong> </h6>
 </div>

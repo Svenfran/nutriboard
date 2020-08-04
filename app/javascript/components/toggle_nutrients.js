@@ -30,11 +30,11 @@ const toggleFoods = () => {
           if (box.classList.contains('hide')) {
             box.classList.remove('hide')
             arrow.innerHTML = '';
-            arrow.insertAdjacentHTML('beforeend', "<p>HIDE FOOD</p> <i class='fas fa-caret-up'></i>")
+            arrow.insertAdjacentHTML('beforeend', "<p>HIDE FOOD</p> <i class='fas fa-angle-up'></i>")
           } else {
             box.classList.add('hide')
             arrow.innerHTML = '';
-            arrow.insertAdjacentHTML('beforeend', "<p>SHOW FOOD</p> <i class='fas fa-caret-down'></i>")
+            arrow.insertAdjacentHTML('beforeend', "<p>SHOW FOOD</p> <i class='fas fa-angle-down'></i>")
           };
         };
       });

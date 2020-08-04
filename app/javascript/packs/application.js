@@ -33,7 +33,10 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   toggleNutrients();
   toggleFoods();
+  autocompleteSearch();
 });
 
-import { toggleNutrients } from '../components/toggle_nutrients'
-import { toggleFoods } from '../components/toggle_nutrients'
+import { toggleNutrients } from '../components/toggle_nutrients';
+import { toggleFoods } from '../components/toggle_nutrients';
+import { autocompleteSearch } from "../components/autocomplete";
+

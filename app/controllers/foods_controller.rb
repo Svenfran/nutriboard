@@ -8,6 +8,12 @@ class FoodsController < ApplicationController
   def new
     @food = Food.new
     @nutrient = Nutrient.new
+    @foods = Food.pluck(:name).sort
+  end
+  
+  def autocomplete
+    results = AutocompleteSearchService.new(params[:food_name]).call
+    render json: results
   end
 
   def create
@@ -29,7 +35,9 @@ class FoodsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @foods = Food.pluck(:name).sort
+  end
 
   def update
     respond_to do |format|
@@ -95,4 +103,5 @@ class FoodsController < ApplicationController
     end
     nutrients_arr
   end
+
 end
