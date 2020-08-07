@@ -1,7 +1,5 @@
 <%= simple_form_for([@meal, @food]) do |f| %>
-  <div id="search-data" data-foods="<%= @foods.to_json %>">
-    <%= f.input :name, autocomplete: :off %>
-  </div>
+  <%= f.input :name, autocomplete: :off %>
   <%= f.input :amount %>
   <%= f.input :unit %>
   <%= f.submit class: 'btn btn-info mb-3' %>

@@ -15,6 +15,6 @@ class AutocompleteSearchService
 
   def foods
     response = self.class.get("/auto-complete", query: { q: @term })
-    response.map { |f| f }.take(5)
+    response.map { |f| f }.take(10)
   end
 end

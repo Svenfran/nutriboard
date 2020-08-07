@@ -8,7 +8,6 @@ class FoodsController < ApplicationController
   def new
     @food = Food.new
     @nutrient = Nutrient.new
-    @foods = Food.pluck(:name).sort
   end
   
   def autocomplete
@@ -35,9 +34,7 @@ class FoodsController < ApplicationController
     end
   end
 
-  def edit
-    @foods = Food.pluck(:name).sort
-  end
+  def edit; end
 
   def update
     respond_to do |format|
