@@ -5,4 +5,8 @@
   <h6 class="ml-3">dinner: <strong><%= @meals.where(category: 'dinner').count %></strong> </h6>
   <h6 class="ml-3">snack: <strong><%= @meals.where(category: 'snack').count %></strong> </h6>
   <h6 class="ml-3">breakfast: <strong><%= @meals.where(category: 'breakfast').count %></strong> </h6>
+
+  <%= column_chart charts_new_meals_path %>
+  <%= column_chart charts_new_foods_path %>
+  <%= column_chart charts_new_nutrients_path %>
 </div>
