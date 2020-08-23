@@ -1,12 +1,14 @@
 <%= render 'shared/sidebar' %>
 <div class="content">
-  <h5 class="ml-3">Number of Meals: <strong><%= @meals.count %></strong> </h5>
-  <h6 class="ml-3">lunch: <strong><%= @meals.where(category: 'lunch').count %></strong> </h6>
-  <h6 class="ml-3">dinner: <strong><%= @meals.where(category: 'dinner').count %></strong> </h6>
-  <h6 class="ml-3">snack: <strong><%= @meals.where(category: 'snack').count %></strong> </h6>
-  <h6 class="ml-3">breakfast: <strong><%= @meals.where(category: 'breakfast').count %></strong> </h6>
-
-  <%= column_chart charts_new_meals_path %>
-  <%= column_chart charts_new_foods_path %>
-  <%= column_chart charts_new_nutrients_path %>
+  <div class="charts">
+    <div class="chart">
+      <%= column_chart charts_meal_calories_path, xtitle: "Meals", ytitle: "Energy", suffix: " kcal"%>
+    </div>
+    <div class="chart">
+      <%= pie_chart charts_total_calories_path, donut: true %>
+    </div>
+    <div class="chart">
+      <%= pie_chart charts_total_nutrients_path, donut: true %>
+    </div>
+  </div>
 </div>

@@ -1,13 +1,20 @@
 class ChartsController < ApplicationController
-  def new_meals
-    render json: Meal.group(:name).count
+  def meal_calories
+    @meals = Meal.all
+    data = {}
+    @meals.each do |meal|
+      if meal.user == current_user
+        data[meal.name] = meal.nutrients.where(nutrients: {name: 'Energy'}).sum(:amount)
+      end
+    end
+    render json: data.sort_by {|k, v| -v}
   end
 
-  def new_foods
-    render json: Food.group(:name).count
+  def total_calories
+    render json: Nutrient.where(name: 'Energy').group(:name).sum(:amount).sort_by {|k, v| -v}
   end
 
-  def new_nutrients
-    render json: Nutrient.group(:name).sum(:amount)
+  def total_nutrients
+    render json: Nutrient.where.not(name: 'Energy').where.not(name: 'Fiber').group(:name).sum(:amount).sort_by {|k, v| -v}
   end
 end

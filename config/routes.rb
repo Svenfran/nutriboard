@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   resources :foods, only: %i[destroy]
 
   namespace :charts do
-    get "new-meals"
-    get "new-foods"
-    get "new-nutrients"
+    get "meal-calories"
+    get "total-calories"
+    get "total-nutrients"
   end
 end
