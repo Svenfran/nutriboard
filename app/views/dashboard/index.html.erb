@@ -2,13 +2,13 @@
 <div class="content">
   <div class="charts">
     <div class="chart">
-      <%= column_chart charts_meal_calories_path, xtitle: "Meals", ytitle: "Energy", suffix: " kcal"%>
+      <%= column_chart charts_meal_calories_path, suffix: " kcal", round: 0 %>
     </div>
     <div class="chart">
-      <%= pie_chart charts_total_calories_path, donut: true %>
+      <%= pie_chart charts_total_calories_path, round: 0, donut: true %>
     </div>
     <div class="chart">
-      <%= pie_chart charts_total_nutrients_path, donut: true %>
+      <%= pie_chart charts_total_nutrients_path, round: 0, donut: true %>
     </div>
   </div>
 </div>
