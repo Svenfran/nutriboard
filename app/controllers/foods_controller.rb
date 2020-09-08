@@ -8,16 +8,20 @@ class FoodsController < ApplicationController
   def new
     @food = Food.new
     @nutrient = Nutrient.new
+    authorize @food
+    # authorize @nutrient
   end
   
   def autocomplete
     results = AutocompleteSearchService.new(params[:food_name]).call
+    authorize policy_scope(Food)
     render json: results
   end
 
   def create
     @food = Food.new(food_params)
     @food.meal = @meal
+    authorize @food
     food_nutrients = []
 
     respond_to do |format|
@@ -61,10 +65,12 @@ class FoodsController < ApplicationController
 
   def set_food
     @food = Food.find(params[:id])
+    authorize @food
   end
 
   def set_meal
     @meal = Meal.find(params[:meal_id])
+    authorize @meal
   end
 
   def food_params

@@ -2,20 +2,22 @@ class MealsController < ApplicationController
   before_action :set_meal, only: %i[show edit update destroy]
 
   def index
-    @meals = Meal.all
-    @foods = Food.all
-    @nutrients = Nutrient.all
+    @meals = policy_scope(Meal).order(created_at: :asc)
+    @foods = policy_scope(Food)
+    @nutrients = policy_scope(Nutrient)
   end
 
   def show; end
   
   def new
     @meal = Meal.new
+    authorize @meal
   end
 
   def create
     @meal = Meal.new(meal_params)
     @meal.user = current_user
+    authorize @meal
 
     respond_to do |format|
       if @meal.save
@@ -51,6 +53,7 @@ class MealsController < ApplicationController
 
   def set_meal
     @meal = Meal.find(params[:id])
+    authorize @meal
   end
 
   def meal_params

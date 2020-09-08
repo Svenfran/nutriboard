@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
+  
   def index
-    @meals = Meal.all
+    @meals = policy_scope(Meal)
   end
 end

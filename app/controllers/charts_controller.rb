@@ -1,6 +1,6 @@
 class ChartsController < ApplicationController
   def meal_calories
-    @meals = Meal.all
+    @meals = policy_scope(Meal)
     data = {}
     @meals.each do |meal|
       if meal.user == current_user

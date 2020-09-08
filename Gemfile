@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'chartkick'
 gem 'groupdate'
 gem 'devise'
+gem 'pundit'
 gem 'httparty'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
