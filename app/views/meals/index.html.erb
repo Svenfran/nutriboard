@@ -7,21 +7,19 @@
           <div class="meal-box mb-2">
             <div class="meal-header pb-1">
               <h6><%= meal.name.upcase %></h6>
-              <%# if policy(meal).edit? %>
+              
                 <%= link_to edit_meal_path(meal) do %>
                   <i class="fas fa-edit"></i>
                 <% end %>
-              <%# end %>
-              <%# if policy(meal).new? %>
+              
                 <%= link_to new_meal_food_path(meal) do %>
                   <i class="fas fa-plus"></i>
                 <% end %>
-              <%# end %>
-              <%# if policy(meal).destroy? %>
+             
                 <%= link_to meal_path(meal), method: :delete, data: {confirm: "Delete #{meal.name}?"} do %>
                   <i class="far fa-trash-alt"></i>
                 <% end %>
-              <%# end %>
+              
               <div class="meal-category">
                 <p><%= meal.category %></p>
               </div>
@@ -37,16 +35,15 @@
                     <div class="food-icons">
                       <li class="toggle-nutrients"><%= food.amount.round %><%= food.unit %> <strong><%= food.name %></strong></li>
                       <div class="food-icons">
-                      <%# if policy(food).edit? %>
+                      
                         <%= link_to edit_meal_food_path(meal, food) do %>
                           <i class="fas fa-edit"></i>
                         <% end %>
-                      <%# end %>
-                      <%# if policy(food).destroy? %>
+              
                         <%= link_to food_path(food), method: :delete, data: {confirm: "Delete #{food.name} form #{meal.name}?"} do %>
                           <i class="far fa-trash-alt"></i>
                         <% end %>
-                      <%# end %>
+                     
                       </div>
                     </div>
                     <div class="nutrients hide">

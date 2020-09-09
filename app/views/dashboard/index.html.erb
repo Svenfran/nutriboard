@@ -2,13 +2,28 @@
 <div class="content">
   <div class="charts">
     <div class="chart">
-      <%= column_chart charts_meal_calories_path, suffix: " kcal", round: 0 %>
+      <%= column_chart charts_meal_calories_path, 
+        suffix: " kcal", 
+        round: 0, 
+        title: "Meal Calories", 
+        colors: ["#12664F"], 
+        legend: false %>
     </div>
     <div class="chart">
-      <%= pie_chart charts_total_calories_path, round: 0, donut: true %>
+      <%= pie_chart charts_total_calories_path,
+        round: 0,
+        donut: true,
+        title: "Total Calories",
+        colors: ["#12664F"],
+        legend: false %>
     </div>
     <div class="chart">
-      <%= pie_chart charts_total_nutrients_path, round: 0, donut: true %>
+      <%= pie_chart charts_total_nutrients_path,
+        round: 0,
+        donut: true,
+        title: "Total Macros",
+        colors: ["#188B6C", "1EAE88", "23D1A3"],
+        legend: false %>
     </div>
   </div>
 </div>
