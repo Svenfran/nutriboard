@@ -15,7 +15,8 @@
         donut: true,
         title: "Total Calories",
         colors: ["#12664F"],
-        legend: false %>
+        legend: false,
+        library: {cutoutPercentage: 80, elements: {arc: {borderWidth: 0}}} %>
     </div>
     <div class="chart">
       <%= pie_chart charts_total_nutrients_path,
@@ -23,7 +24,10 @@
         donut: true,
         title: "Total Macros",
         colors: ["#188B6C", "1EAE88", "23D1A3"],
-        legend: false %>
+        legend: false,
+        library: {cutoutPercentage: 80, elements: {arc: {borderWidth: 0}}} %>
     </div>
   </div>
 </div>
+
+<%# colors: ['#007bff','#28a745','#333333','#c3e6cb','#dc3545','#6c757d'] %>

@@ -1,6 +1,7 @@
 <%= simple_form_for(@meal) do |f| %>
   <%= f.input :name %>
-  <%= f.input :category %>
+  <%= f.input :category, as: :select, collection: ['breakfast', 'lunch', 'dinner', 'dessert', 'snack'] %>
+  <%#= f.select :category, ['breakfast', 'lunch', 'dinner', 'dessert', 'snack'] %>
   <%# food name -> from API AUTOCOMPLET in search-field%>
   <%# food amount -> you can type any amount you want (not from API) %>
   <%# food unit -> only units should be shown if available (from API) DROPDWON%>

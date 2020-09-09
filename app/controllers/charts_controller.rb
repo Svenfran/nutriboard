@@ -4,7 +4,7 @@ class ChartsController < ApplicationController
     @meals = policy_scope(Meal)
     data = {}
     @meals.each do |meal|
-      data[meal.name] = meal.nutrients.where(nutrients: {name: 'Energy'}).sum(:amount)
+      data[meal.category] = meal.nutrients.where(nutrients: {name: 'Energy'}).sum(:amount)
     end
     render json: data.sort_by {|k, v| -v}
   end
